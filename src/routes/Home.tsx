@@ -1,0 +1,25 @@
+import { useEffect } from 'react'
+import log from '../utils/logger'
+
+export default function Home() {
+  // log mounts
+  useEffect(() => {
+    log('navy', 'Route: Home Mounted')
+    return () => log('darkred', 'Route: Home Unmounted')
+  })
+
+  const render = () => {
+    return (
+      <div>
+        <h4>Umbra</h4>
+        <p>Version 0.1.0</p>
+      </div>
+    )
+  }
+
+  return (
+    <>
+      {render()}
+    </>
+  )
+}

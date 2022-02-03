@@ -1,6 +1,9 @@
 {
   "name": "umbra",
   "version": "0.2.0",
+  "engines": {
+    "node": "14.x"
+  },
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",

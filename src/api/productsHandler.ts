@@ -16,7 +16,7 @@ export async function fetchProducts(filters: KinguinFilters) {
     }
   }
 
-  const { data }: { data: KinguinResponse } = await axios.get('http://localhost:8000/v1/products', {
+  const { data }: { data: KinguinResponse } = await axios.get(process.env.REACT_APP_API as string, {
     params: {
       limit: 24,
       sortBy: 'metacriticScore',

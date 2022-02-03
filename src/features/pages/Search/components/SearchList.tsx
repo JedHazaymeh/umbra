@@ -12,14 +12,11 @@ import Product from "../../../common/Product"
 import {
   Box,
   Grid,
-  Chip,
   Toolbar,
   CircularProgress,
   Pagination,
   Typography,
   Select,
-  FormControl,
-  InputLabel,
   MenuItem,
   ToggleButtonGroup,
   ToggleButton

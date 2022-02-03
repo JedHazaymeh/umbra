@@ -1,5 +1,4 @@
 import { PaletteMode, ThemeOptions } from "@mui/material";
-import * as colors from "@mui/material/colors";
 
 export const getTheme = (mode: PaletteMode): ThemeOptions => (
   mode === 'dark' ? darkOptions : lightOptions

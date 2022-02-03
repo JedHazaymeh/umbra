@@ -6,6 +6,8 @@ import {
   KinguinResponse
 } from './kinguin'
 
+const API_URL = process.env.REACT_APP_API as string
+
 export async function fetchProducts(filters: KinguinFilters) {
   let params: KinguinFiltersPartial = {}
   
@@ -16,7 +18,7 @@ export async function fetchProducts(filters: KinguinFilters) {
     }
   }
 
-  const { data }: { data: KinguinResponse } = await axios.get(process.env.REACT_APP_API as string, {
+  const { data }: { data: KinguinResponse } = await axios.get(API_URL + '/products', {
     params: {
       limit: 24,
       sortBy: 'metacriticScore',

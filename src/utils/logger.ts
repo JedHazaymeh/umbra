@@ -1,4 +1,4 @@
-export default function log(color: string, ...input: string[]) {
+export default function log(color: string, ...input: any[]) {
   const currentDate = new Date()
   const date = (
     String(currentDate.getDate()).padStart(2, '0') +

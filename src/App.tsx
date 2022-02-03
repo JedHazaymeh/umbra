@@ -1,22 +1,28 @@
+import { useMemo } from 'react'
+import { useAppSelector } from './state/hooks'
 import { Routes, Route } from 'react-router-dom'
+import { ThemeProvider } from '@emotion/react'
+import { createTheme, CssBaseline } from '@mui/material'
 
-// Component imports
-// import Header from './components/Header'
-// import Footer from './components/Footer'
+// Import pages
+import HomePage from './features/pages/Home/HomePage'
+import SearchPage from './features/pages/Search/SearchPage'
 
-// Route imports
-import HomePage from './routes/Home'
-import ProductsPage from './routes/Products'
+// Import theme
+import { getTheme } from './theme'
 
 export default function App() {
+  const mode = useAppSelector((state) => state.settings.theme)
+  const theme = useMemo(() => createTheme(getTheme(mode)), [mode])
+
   return (
-    <div className="container">
-      {/* <Header /> */}
+    <ThemeProvider theme={theme} >
+      <CssBaseline />
       <Routes>
         <Route path='/'         element={ <HomePage /> } />
-        <Route path='/products' element={ <ProductsPage /> } />
+        <Route path='/products' element={ <SearchPage /> } />
+        <Route path='/games'    element={ <SearchPage /> } />
       </Routes>
-      {/* <Footer /> */}
-    </div>
+    </ThemeProvider>
   )
 }

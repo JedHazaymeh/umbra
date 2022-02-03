@@ -18,7 +18,11 @@ export async function fetchProducts(filters: KinguinFilters) {
     }
   }
 
+<<<<<<< HEAD
   const { data }: { data: KinguinResponse } = await axios.get(API_URL + '/products', {
+=======
+  const { data }: { data: KinguinResponse } = await axios.get('http://localhost:8000/v1/products', {
+>>>>>>> parent of b64c64c (fix: refactored API .env + added to handler)
     params: {
       limit: 24,
       sortBy: 'metacriticScore',

@@ -47,8 +47,9 @@ export default function SearchList() {
   // state: product ids
   const productIds = useAppSelector(state => {
     const products = state.features.products.data
-    return products.map(product => product.kinguinId)
-  }, shallowEqual)
+    if (!products) return dispatch(setStatus('error'))
+    return products.map((product) => product.kinguinId)
+  }, shallowEqual) as number[]
 
   // log mounts
   useEffect(() => {
@@ -67,7 +68,8 @@ export default function SearchList() {
   }
 
   let ListContent: JSX.Element
-  if (status === 'loading') ListContent = (
+  if (status === 'error') ListContent = <></>
+  else if (status === 'loading') ListContent = (
     <Box width='100%' height='300px' justifyContent='center' alignItems='center' display='flex'>
       <CircularProgress size={80} color='primary' />
     </Box>

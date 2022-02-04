@@ -1,5 +1,5 @@
 // External imports
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 // Local imports
 import log from '../../utils/logger'
@@ -29,7 +29,12 @@ const initialState = {
 export const ProductSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    setStatus: (state, action: PayloadAction<ProductState['status']>) => {
+      log('darkgreen', 'Action: products/setStatus')
+      state.status = action.payload
+    }
+  },
   extraReducers: (builder) => {
     builder
     .addCase(searchProducts.pending, (state) => {

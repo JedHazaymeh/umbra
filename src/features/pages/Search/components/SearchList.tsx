@@ -6,7 +6,7 @@ import { shallowEqual } from "react-redux"
 import log from "../../../../utils/logger"
 
 import { setFilterPage, setSortBy, toggleSortType } from "../../../../state/slices/FilterSlice"
-import { searchProducts } from "../../../../state/slices/ProductSlice"
+import { searchProducts, setStatus } from "../../../../state/slices/ProductSlice"
 import Product from "../../../common/Product"
 
 import {

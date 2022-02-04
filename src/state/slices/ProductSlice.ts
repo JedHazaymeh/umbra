@@ -51,6 +51,10 @@ export const ProductSlice = createSlice({
   }
 })
 
+export const {
+  setStatus
+} = ProductSlice.actions
+
 export const searchProducts = createAsyncThunk(
   'api/fetchProducts',
   async (filters: KinguinFilters) => {

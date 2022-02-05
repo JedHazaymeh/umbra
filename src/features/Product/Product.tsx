@@ -15,9 +15,7 @@ import {
 } from '@mui/material'
 
 import {
-  BookmarkBorder,
   FavoriteBorder,
-  Bookmark,
   Favorite
 } from '@mui/icons-material';
 

@@ -49,7 +49,7 @@ const Product = React.memo(function Product({ id }: props) {
     <CardActionArea>
       <Card sx={{
         display: 'flex',
-        height: ['120px', '140px', '160px'],
+        height: ['120px', '140px', '160px']
         // border: '1px dashed cyan'
       }}>
         {/* product card: cover image */}
@@ -68,45 +68,46 @@ const Product = React.memo(function Product({ id }: props) {
           flex: '1',
           display: 'flex',
           flexDirection: 'column',
-          pt: ['8px', '12px'],
+          padding: ['10px 14px 14px', '12px 16px 16px'],
+          "&:last-child": {
+            paddingBottom: ['14px', '16px']
+          }
           // border: '1px dashed red'
         }}>
           {/* header grid */}
-          <Grid container mb='2px' height='26px'>
+          <Grid container columns={16} mb='2px' height='26px'>
             {/* header left: product title */}
-            <Grid item xs={9} flex='1 0' sx={{ height: 1, maskImage: 'linear-gradient(90deg, #000 85%, transparent 98%)' }}>
+            <Grid item xs={14} flex='1 0' sx={{ height: 1, maskImage: 'linear-gradient(90deg, #000 85%, transparent 98%)' }}>
               <Typography sx={{ wordBreak: 'break-all', fontSize: ['1.1em', '1.2em', '1.1em', '1.2em'] }} variant='h6' component='div'>
-                {!data.originalName ? data.name : data.originalName}
+                {data.name}
               </Typography>
             </Grid>
             {/* header right: card extras */}
-            <Grid item xs={3}>
-              <Grid container rowSpacing={1} flexDirection='row-reverse'>
-                <Checkbox sx={{ mr: -1 }} icon={<BookmarkBorder />} checkedIcon={<Bookmark />} />
-                <Checkbox sx={{ mr: -1, '&.Mui-checked': { color: 'crimson', } }} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
-              </Grid>
+            <Grid item xs={2} display='flex' justifyContent='end'>
+              <Checkbox sx={{ m: -1 }} size='small' icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
             </Grid>
           </Grid>
           {/* middle box */}
           <Box display='flex' flexDirection='column' flex='1 0 auto'>
             {/* middle top: product tags */}
             <Box flex='1 0 auto'>
-                {data.tags.map((tag) => <Chip sx={{ textTransform: 'uppercase', mr: '5px', fontSize: '0.9em' }} label={tag} color='primary' size='small' variant='outlined' />)}
+              <Chip sx={{ textTransform: 'uppercase', mr: '5px', fontSize: '0.9em' }} label={data.platform} color='secondary' size='small' />
+              <Chip sx={{ textTransform: 'uppercase', mr: '5px', fontSize: '0.9em' }} label={['base', 'dlc'].every((val) => data.tags.indexOf(val) !== -1) ? 'bundle' : data.tags[0] || 'Other'} color='primary' size='small' variant='outlined' />
             </Box>
             {/* middle bottom: product company */}
-            <Typography sx={{ fontSize: ['1em', '1.1em', '1em', '1.1em'], mb: '5px' }} display={['none', 'none', 'block']} variant='subtitle1' color='text.secondary' component='div'>
+            <Typography textTransform='capitalize' fontSize={['1em', '1.1em', '1em', '1.1em']} mb='5px' display={['none', 'none', 'block']} variant='subtitle1' color='text.secondary' component='div' height='21px' sx={{ wordBreak: 'break-all', maskImage: 'linear-gradient(90deg, #000 85%, transparent 98%)' }}>
               {company}
             </Typography>
           </Box>
           {/* footer box */}
           <Box display='flex' flexDirection='row'>
             {/* footer left: product genres */}
-            <Typography sx={{ fontSize: '1em' }} display={['none', 'inline-block', 'block']} flex='1 0 auto' variant='subtitle2' color='text.secondary' component='div'>
-              {data.genres.slice(0, 3).join(' • ')}
+            <Typography variant='h6' component='div' flex='1 0 auto'>
+              €{data.price.toFixed(2)}
             </Typography>
             {/* footer right: product price */}
-            <Typography sx={{ fontSize: ['1em', '1.2em', '1.1em', '1.2em'] }} variant='h6' component='div'>
-              € {data.price}
+            <Typography textTransform='uppercase' display='flex' alignItems='center' fontSize={['1em', '1.05em', '1em', '1.05em']} variant='subtitle2' color='text.secondary' component='div'>
+              {data.regionalLimitations === 'Region Free' ? 'Global' : data.regionalLimitations}
             </Typography>
           </Box>
         </CardContent>

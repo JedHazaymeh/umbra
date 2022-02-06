@@ -9,11 +9,11 @@ import HomePage from './features/pages/Home/HomePage'
 import SearchPage from './features/pages/Search/SearchPage'
 
 // Import theme
-import { getTheme } from './theme'
+import getThemeOptions from './theme/build'
 
 export default function App() {
   const mode = useAppSelector((state) => state.settings.theme)
-  const theme = useMemo(() => createTheme(getTheme(mode)), [mode])
+  const theme = useMemo(() => createTheme(getThemeOptions(mode)), [mode])
 
   return (
     <ThemeProvider theme={theme} >

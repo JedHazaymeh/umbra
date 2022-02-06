@@ -29,8 +29,6 @@ import {
   Sort
 } from '@mui/icons-material'
 
-import { drawerWidth } from "./FilterDrawer"
-
 export default function SearchList() {
   const subject = useLocation().pathname.substring(1)
   

@@ -72,14 +72,14 @@ export default function SearchList() {
   }
 
   let ListContent: JSX.Element
-  if (status === 'error') ListContent = <>
+  if (status === 'error') ListContent = (
     <Box width='100%' height='300px' justifyContent='center' alignItems='center' display='flex'>
       <ErrorOutline fontSize='large' />
       <Typography>
         Oops! Something went wrong...
       </Typography>
     </Box>
-    </>
+  )
   else if (status === 'loading') ListContent = (
     <Box width='100%' height='300px' justifyContent='center' alignItems='center' display='flex'>
       <CircularProgress size={80} color='primary' />
@@ -134,14 +134,11 @@ export default function SearchList() {
   return (
     <Box
       display='flex'
-      flexDirection='column'
       alignItems='center'
+      width='100%'
+      flexDirection='column'
       component="main"
-      sx={{
-        flexGrow: 1,
-        p: { xs: 2, md: 3, xl: 4 },
-        width: { sm: `calc(100% - ${drawerWidth}` }
-      }}
+      padding={{ xs: 2, md: 3, xl: 4 }}
     >
       <Toolbar />
       {ListContent}

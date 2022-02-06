@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { useAppSelector } from '../../state/hooks'
-import log from '../../utils/logger'
+import { useAppSelector } from '../../../state/hooks'
+import log from '../../../utils/logger'
 
 import {
   Card,
@@ -14,16 +14,18 @@ import {
   Grid
 } from '@mui/material'
 
+import ExternalChip from '../External/ExternalChip'
+
 import {
   FavoriteBorder,
   Favorite
-} from '@mui/icons-material';
+} from '@mui/icons-material'
 
-type props = {
+type Props = {
   id: number
 }
 
-const Product = React.memo(function Product({ id }: props) {
+const Product = React.memo(function Product({ id }: Props) {
   const data = useAppSelector(state => {
     const products = state.features.products.data
     return products.find(product => product.kinguinId === id)
@@ -89,8 +91,8 @@ const Product = React.memo(function Product({ id }: props) {
           <Box display='flex' flexDirection='column' flex='1 0 auto'>
             {/* middle top: product tags */}
             <Box flex='1 0 auto'>
-              <Chip sx={{ textTransform: 'uppercase', mr: '5px', fontSize: '0.9em' }} label={data.platform} color='secondary' size='small' />
-              <Chip sx={{ textTransform: 'uppercase', mr: '5px', fontSize: '0.9em' }} label={['base', 'dlc'].every((val) => data.tags.indexOf(val) !== -1) ? 'bundle' : data.tags[0] || 'Other'} color='primary' size='small' variant='outlined' />
+              <ExternalChip label={data.platform} size='small' sx={{ textTransform: 'uppercase', fontSize: '0.9em', mr: '5px' }} />
+              <Chip sx={{ textTransform: 'uppercase', fontSize: '0.9em' }} label={['base', 'dlc'].every((val) => data.tags.indexOf(val) !== -1) ? 'bundle' : data.tags[0] || 'Other'} size='small' variant='outlined' />
             </Box>
             {/* middle bottom: product company */}
             <Typography textTransform='capitalize' fontSize={['1em', '1.1em', '1em', '1.1em']} mb='5px' display={['none', 'none', 'block']} variant='subtitle1' color='text.secondary' component='div' height='21px' sx={{ wordBreak: 'break-all', maskImage: 'linear-gradient(90deg, #000 85%, transparent 98%)' }}>

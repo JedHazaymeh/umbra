@@ -137,7 +137,11 @@ export default function SearchList() {
       flexDirection='column'
       alignItems='center'
       component="main"
-      sx={{ flexGrow: 1, p: { xs: 2, md: 3, xl: 4 }, width: { sm: `calc(100% - 210px)` } }}
+      sx={{
+        flexGrow: 1,
+        p: { xs: 2, md: 3, xl: 4 },
+        width: { sm: `calc(100% - ${drawerWidth}` }
+      }}
     >
       <Toolbar />
       {ListContent}

@@ -13,7 +13,8 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Checkbox
+  Checkbox,
+  Box
 } from '@mui/material'
 
 type Props = {
@@ -38,31 +39,42 @@ const FilterList = React.memo(function FilterList({ name, displayName, items }: 
   const handleToggle = (filter: string) => {
     dispatch(toggleListFilter({ name, filter }))
   }
-
+  
   if (!Array.isArray(list)) return <p>Not a list</p>
-
-  return <>
-    <Typography variant='subtitle2'>
-      {displayName}
-    </Typography>
-    <List>
-      {items.map((filter) => (
-        <ListItem disablePadding key={filter}>
-          <ListItemButton onClick={() => handleToggle(filter)} dense>
-            <ListItemIcon>
-              <Checkbox
-                edge="start"
-                checked={list.indexOf(filter) !== -1}
-                tabIndex={-1}
-                disableRipple
-              />
-            </ListItemIcon>
-            <ListItemText sx={{ ml: -2 }} primary={filter.toUpperCase()} />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
-  </>
+  
+  return (
+    <Box sx={{ p: 2 }}>
+      <Typography variant='subtitle2'>
+        {displayName}
+      </Typography>
+      <List>
+        {items.map((filter) => {
+          const checked = list.indexOf(filter) !== -1
+          return (
+            <ListItem disablePadding key={filter}>
+              <ListItemButton sx={{ p: 0 }} onClick={() => handleToggle(filter)} dense>
+                <ListItemIcon sx={{ justifyContent: 'center' }}>
+                  <Checkbox
+                    sx={{ p: 0.75 }}
+                    edge="start"
+                    checked={checked}
+                    tabIndex={-1}
+                    disableRipple
+                  />
+                </ListItemIcon>
+                <Typography color={checked ? 'white' : 'text.secondary'}>
+                  <ListItemText
+                    sx={{ textTransform: 'capitalize' }}
+                    primary={filter === 'dlc' ? 'DLC' : filter}
+                  />
+                </Typography>
+              </ListItemButton>
+            </ListItem>
+          )
+        })}
+      </List>
+    </Box>
+  )
 })
 
 export default FilterList

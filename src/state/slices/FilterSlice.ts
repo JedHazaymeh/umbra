@@ -65,6 +65,10 @@ export const FilterSlice = createSlice({
       log('darkgreen', 'Action: filters/setFilterPage')
       state.products.page = action.payload
     },
+    setFilterName: (state, action: PayloadAction<string>) => {
+      log('darkgreen', 'Action: filters/setFilterName')
+      state.products.name = action.payload
+    },
     setSortBy: (state, action: PayloadAction<string>) => {
       log('darkgreen', 'Action: filters/setSortBy')
       state.products.sortBy = action.payload
@@ -81,6 +85,7 @@ export const {
   toggleListFilter,
   setFilterLimit,
   setFilterPage,
+  setFilterName,
   setSortBy,
   toggleSortType
 } = FilterSlice.actions

@@ -10,7 +10,7 @@ import {
 
 import FilterContent from './FilterContent'
 
-export const drawerWidth = { sm: 210, lg: 240 }
+export const drawerWidth = { sm: 210 }
 
 export default function FilterDrawer() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -43,9 +43,7 @@ export default function FilterDrawer() {
         }}
       >
         <Toolbar />
-        <Box sx={{ p: 2 }}>
-          <FilterContent />
-        </Box>
+        <FilterContent />
       </Drawer>
       <Drawer
         variant='permanent'
@@ -56,9 +54,7 @@ export default function FilterDrawer() {
         open
       >
         <Toolbar />
-        <Box sx={{ p: 2 }}>
-          <FilterContent />
-        </Box>
+        <FilterContent />
       </Drawer>
     </Box>
   )

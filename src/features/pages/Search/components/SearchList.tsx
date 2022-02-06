@@ -7,7 +7,7 @@ import log from "../../../../utils/logger"
 
 import { setFilterPage, setSortBy, toggleSortType } from "../../../../state/slices/FilterSlice"
 import { searchProducts, setStatus } from "../../../../state/slices/ProductSlice"
-import Product from "../../../Product/Product"
+import Product from "../../../common/Product/Product"
 
 import {
   Box,
@@ -22,9 +22,12 @@ import {
   ToggleButton
 } from "@mui/material"
 
-import ArrowDownIcon from '@mui/icons-material/ArrowDropDownRounded'
-import ArrowUpIcon from '@mui/icons-material/ArrowDropUpRounded'
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import {
+  ArrowDropDown,
+  ArrowDropUp,
+  ErrorOutline,
+  Sort
+} from '@mui/icons-material'
 
 import { drawerWidth } from "./FilterDrawer"
 
@@ -71,7 +74,7 @@ export default function SearchList() {
   let ListContent: JSX.Element
   if (status === 'error') ListContent = <>
     <Box width='100%' height='300px' justifyContent='center' alignItems='center' display='flex'>
-      <ErrorOutlineIcon fontSize='large' />
+      <ErrorOutline fontSize='large' />
       <Typography>
         Oops! Something went wrong...
       </Typography>
@@ -91,11 +94,11 @@ export default function SearchList() {
       </Box>
       {/* top pagination */}
       <Box>
-        <Pagination showFirstButton showLastButton hidePrevButton hideNextButton boundaryCount={0} count={Math.min(pages, 200)} page={filters.page} onChange={(e, page) => dispatch(setFilterPage(page))} color='primary' variant='outlined' shape='rounded'/>
+        <Pagination siblingCount={2} boundaryCount={0} count={Math.min(pages, 200)} page={filters.page} onChange={(e, page) => dispatch(setFilterPage(page))} color='primary' variant='outlined' shape='rounded'/>
       </Box>
       {/* search sort function */}
       <Box display='flex' alignItems='center'>
-        <Typography variant='subtitle1' color='text.secondary' fontSize='0.95em' display={{ xs: 'none', md: 'inline' }} mr={1}>Sort by</Typography>
+        <Sort sx={{ m: 1 }} />
         <Select value={filters.sortBy} sx={{ maxHeight: 50, minWidth: 100 }} onChange={(e) => dispatch(setSortBy(e.target.value))}>
           <MenuItem value='metacriticScore'>Rating</MenuItem>
           <MenuItem value='originalName'>Name</MenuItem>
@@ -104,10 +107,10 @@ export default function SearchList() {
         </Select>
         <ToggleButtonGroup orientation="vertical" value={filters.sortType} exclusive onChange={() => dispatch(toggleSortType())} sx={{ ml: 1 }}>
           <ToggleButton value="asc" sx={{ p: 0 }} >
-            <ArrowUpIcon />
+            <ArrowDropUp />
           </ToggleButton>
           <ToggleButton value="desc" sx={{ p: 0 }} >
-            <ArrowDownIcon />
+            <ArrowDropDown />
           </ToggleButton>
         </ToggleButtonGroup>
       </Box>

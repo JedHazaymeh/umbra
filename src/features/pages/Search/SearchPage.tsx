@@ -5,7 +5,7 @@ import log from '../../../utils/logger'
 
 import FilterDrawer from './components/FilterDrawer'
 import SearchList from './components/SearchList'
-import Header from '../../common/Header'
+import Header from '../../common/Header/Header'
 
 import { Box } from '@mui/material'
 

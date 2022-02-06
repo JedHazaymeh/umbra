@@ -85,56 +85,59 @@ export default function SearchList() {
       <CircularProgress size={80} color='primary' />
     </Box>
   )
-  else ListContent = <>
-    <Box display='flex' justifyContent='space-between' alignItems='center' mb={4} width={1}>
-      {/* result count */}
-      <Box display={{ xs: 'none', md: 'block' }} pr={2}>
-        <Typography variant='subtitle1' display='inline' mr={1}><b>{results}</b></Typography>
-        <Typography variant='subtitle1' display='inline' color='text.secondary' fontSize='0.95em'>Results</Typography>
+  else ListContent = (
+    <Box maxWidth='1400px'>
+      <Box display='flex' justifyContent='space-between' alignItems='center' mb={4} width={1}>
+        {/* result count */}
+        <Box display={{ xs: 'none', md: 'block' }} pr={2}>
+          <Typography variant='subtitle1' display='inline' mr={1}><b>{results}</b></Typography>
+          <Typography variant='subtitle1' display='inline' color='text.secondary' fontSize='0.95em'>Results</Typography>
+        </Box>
+        {/* top pagination */}
+        <Box>
+          <Pagination siblingCount={2} boundaryCount={0} count={Math.min(pages, 200)} page={filters.page} onChange={(e, page) => dispatch(setFilterPage(page))} color='primary' variant='outlined' shape='rounded'/>
+        </Box>
+        {/* search sort function */}
+        <Box display='flex' alignItems='center'>
+          <Sort sx={{ m: 1 }} />
+          <Select value={filters.sortBy} sx={{ maxHeight: 50, minWidth: 100 }} onChange={(e) => dispatch(setSortBy(e.target.value))}>
+            <MenuItem value='metacriticScore'>Rating</MenuItem>
+            <MenuItem value='originalName'>Name</MenuItem>
+            <MenuItem value='price'>Price</MenuItem>
+            <MenuItem value='releaseDate'>Release</MenuItem>
+          </Select>
+          <ToggleButtonGroup orientation="vertical" value={filters.sortType} exclusive onChange={() => dispatch(toggleSortType())} sx={{ ml: 1 }}>
+            <ToggleButton value="asc" sx={{ p: 0 }} >
+              <ArrowDropUp />
+            </ToggleButton>
+            <ToggleButton value="desc" sx={{ p: 0 }} >
+              <ArrowDropDown />
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Box>
       </Box>
-      {/* top pagination */}
-      <Box>
-        <Pagination siblingCount={2} boundaryCount={0} count={Math.min(pages, 200)} page={filters.page} onChange={(e, page) => dispatch(setFilterPage(page))} color='primary' variant='outlined' shape='rounded'/>
-      </Box>
-      {/* search sort function */}
-      <Box display='flex' alignItems='center'>
-        <Sort sx={{ m: 1 }} />
-        <Select value={filters.sortBy} sx={{ maxHeight: 50, minWidth: 100 }} onChange={(e) => dispatch(setSortBy(e.target.value))}>
-          <MenuItem value='metacriticScore'>Rating</MenuItem>
-          <MenuItem value='originalName'>Name</MenuItem>
-          <MenuItem value='price'>Price</MenuItem>
-          <MenuItem value='releaseDate'>Release</MenuItem>
-        </Select>
-        <ToggleButtonGroup orientation="vertical" value={filters.sortType} exclusive onChange={() => dispatch(toggleSortType())} sx={{ ml: 1 }}>
-          <ToggleButton value="asc" sx={{ p: 0 }} >
-            <ArrowDropUp />
-          </ToggleButton>
-          <ToggleButton value="desc" sx={{ p: 0 }} >
-            <ArrowDropDown />
-          </ToggleButton>
-        </ToggleButtonGroup>
+      {/* search results */}
+      <Grid container spacing={{ xs: 2, md: 3 }}>
+        {productIds.map((id) => (
+          <Grid item xs={12} md={6} xl={4} key={id}>
+            <GridItem id={id} />
+          </Grid>
+        ))}
+      </Grid>
+      {/* bottom pagination */}
+      <Box display='flex' justifyContent='center' alignItems='center' mt={4} width={1}>
+        <Pagination showFirstButton showLastButton hidePrevButton hideNextButton boundaryCount={0} count={Math.min(pages, 200)} page={filters.page} onChange={(e, page) => dispatch(setFilterPage(page))} color='primary' variant='outlined' shape='rounded'/>
       </Box>
     </Box>
-    {/* search results */}
-    <Grid container spacing={{ xs: 2, md: 3 }}>
-      {productIds.map((id) => (
-        <Grid item xs={12} md={6} xl={4} key={id}>
-          <GridItem id={id} />
-        </Grid>
-      ))}
-    </Grid>
-    {/* bottom pagination */}
-    <Box display='flex' justifyContent='center' alignItems='center' mt={4} width={1}>
-      <Pagination showFirstButton showLastButton hidePrevButton hideNextButton boundaryCount={0} count={Math.min(pages, 200)} page={filters.page} onChange={(e, page) => dispatch(setFilterPage(page))} color='primary' variant='outlined' shape='rounded'/>
-    </Box>
-  </>
+  )
 
   return (
     <Box
       display='flex'
       flexDirection='column'
+      alignItems='center'
       component="main"
-      sx={{ flexGrow: 1, p: { xs: 2, md: 3, xl: 4 }, width: { sm: `calc(100% - ${drawerWidth}px)` }, maxWidth: '1400px' }}
+      sx={{ flexGrow: 1, p: { xs: 2, md: 3, xl: 4 }, width: { sm: `calc(100% - 210px)` } }}
     >
       <Toolbar />
       {ListContent}

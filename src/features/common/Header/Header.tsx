@@ -31,7 +31,7 @@ export default function Header() {
           pr: 4
         }}>
           <Box mr={1}>Umbra</Box>
-          <Typography fontSize='0.6em' color='text.secondary'>ALPHA</Typography>
+          <Typography fontSize='0.6em' color='primary'>ALPHA</Typography>
         </Typography>
         <Box display='flex' justifyContent='center' flex='0.75 0 auto'>
           <Search />

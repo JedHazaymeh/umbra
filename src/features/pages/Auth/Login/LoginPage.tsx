@@ -57,7 +57,7 @@ export default function LoginPage() {
 
   return <>
     <Box my={3} display='flex' flexDirection='column' alignItems='center'>
-      <Typography variant='h5' sx={{ py: 1 }}>Login</Typography>
+      <Typography variant='h5' sx={{ py: 1 }}>Sign in</Typography>
       <Typography fontWeight='light' variant='subtitle1'>to continue to Umbra</Typography>
     </Box>
     <Form onSubmit={formik.handleSubmit}>
@@ -85,9 +85,12 @@ export default function LoginPage() {
           disabled={loading}
           sx={{ width: 0.5 }}
         >
-          Login
+          Sign In
         </Button>
       </Box>
     </Form>
+    <Typography component='div' variant='body1' color='text.secondary'>
+      Don't have an account? <Link underline='none' fontSize='1em' variant='subtitle2' href='/auth/register'>Get Started</Link>
+    </Typography>
   </>
 }

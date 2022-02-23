@@ -3,8 +3,9 @@ import { useEffect } from 'react'
 import log from '../../../utils/logger'
 
 import {
-  Typography,
   Box,
+  Link,
+  Typography,
   SxProps,
   Theme
 } from '@mui/material'
@@ -21,13 +22,15 @@ export default function Logo({ sx }: Props) {
   })
 
   return (
-    <Typography variant="h6" noWrap component="div" sx={{
-      display: 'flex',
-      alignItems: 'center',
-      ...sx
-    }}>
-      <Box px={1}>Umbra</Box>
-      <Typography fontSize='0.6em' color='primary'>ALPHA</Typography>
-    </Typography>
+    <Link href='/products' underline='none'>
+      <Typography variant="h6" noWrap component="div" sx={{
+        display: 'flex',
+        alignItems: 'center',
+        ...sx
+      }}>
+        <Box color='white' px={0.5}>Umbra</Box>
+        <Typography fontSize='0.6em' color='primary' px={0.5}>ALPHA</Typography>
+      </Typography>
+    </Link>
   )
 }

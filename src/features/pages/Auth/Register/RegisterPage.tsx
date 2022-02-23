@@ -9,6 +9,7 @@ import log from '../../../../utils/logger'
 import {
   Box,
   Button,
+  Link,
   Typography
 } from '@mui/material'
 
@@ -90,5 +91,8 @@ export default function RegisterPage() {
         Register
       </Button>
     </Form>
+    <Typography component='div' variant='body1' color='text.secondary'>
+      Already have an account? <Link underline='none' fontSize='1em' variant='subtitle2' href='/auth/login'>Sign In</Link>
+    </Typography>
   </>
 }

@@ -13,9 +13,7 @@ import {
 import Search from './Search'
 import Logo from '../Logo'
 
-import { AccountCircleOutlined } from '@mui/icons-material';
-
-import { drawerWidth } from '../../pages/Search/components/FilterDrawer'
+import { AccountCircleOutlined } from '@mui/icons-material'
 
 export default function Header() {
   const loggedIn = useAppSelector((state) => state.auth.loggedIn)
@@ -44,7 +42,7 @@ export default function Header() {
           {loggedIn
             ? <>
               <Button variant='outlined' href='/auth/logout' endIcon={<AccountCircleOutlined />}>
-                Logout
+                Sign Out
               </Button>
             </>
             : <>

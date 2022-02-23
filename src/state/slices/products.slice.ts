@@ -5,12 +5,12 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import log from '../../utils/logger'
 
 // API types + fetch function
-import { fetchProducts } from '../../api/productsHandler'
+import ProductService from '../../services/products.service'
 
 import {
   KinguinProduct,
   KinguinFilters
-} from '../../api/kinguin'
+} from '../../services/statics/kinguin'
 
 // State
 export type ProductState = {
@@ -56,10 +56,10 @@ export const {
 } = ProductSlice.actions
 
 export const searchProducts = createAsyncThunk(
-  'api/fetchProducts',
+  'products/fetchProducts',
   async (filters: KinguinFilters) => {
     log('darkgreen', 'Action: products/searchProducts')
-    const data = await fetchProducts(filters)
+    const data = await ProductService.fetchProducts(filters)
 
     return data
   }

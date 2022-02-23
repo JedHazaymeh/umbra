@@ -3,7 +3,7 @@ import { useAppDispatch } from "../../../state/hooks"
 
 import log from "../../../utils/logger"
 
-import { setFilterName } from "../../../state/slices/FilterSlice"
+import { setFilterName } from "../../../state/slices/filters.slice"
 
 import { SearchBase, SearchInput, SearchSubmit } from "./Search.style"
 import SearchIcon from '@mui/icons-material/Search'

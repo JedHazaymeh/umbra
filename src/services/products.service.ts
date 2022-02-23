@@ -1,14 +1,14 @@
 import axios from 'axios'
 
+import API_URL from './statics/api'
+
 import {
   KinguinFilters,
   KinguinFiltersPartial,
   KinguinResponse
-} from './kinguin'
+} from './statics/kinguin'
 
-const API_URL = process.env.REACT_APP_API as string
-
-export async function fetchProducts(filters: KinguinFilters) {
+async function fetchProducts(filters: KinguinFilters) {
   let params: KinguinFiltersPartial = {}
   
   for (const [name, value] of Object.entries(filters)) {
@@ -30,3 +30,9 @@ export async function fetchProducts(filters: KinguinFilters) {
 
   return data
 }
+
+const ProductService = {
+  fetchProducts
+}
+
+export default ProductService

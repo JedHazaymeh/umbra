@@ -7,7 +7,7 @@ import log from '../../utils/logger'
 // API types
 import {
   KinguinFilters
-} from '../../api/kinguin'
+} from '../../services/statics/kinguin'
 
 // State
 export type FilterState = {

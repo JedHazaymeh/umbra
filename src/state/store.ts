@@ -2,14 +2,15 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import { combineReducers } from 'redux'
 
 // Import reducers
-import settings from './slices/SettingSlice'
-import products from './slices/ProductSlice'
-import filters from './slices/FilterSlice'
+import settings from './slices/settings.slice'
+import products from './slices/products.slice'
+import filters from './slices/filters.slice'
+import auth from './slices/auth.slice'
 
 // Combine reducers into root reducer
 const features = combineReducers({ products, filters })
 
-const reducer = combineReducers({ settings, features })
+const reducer = combineReducers({ auth, settings, features })
 
 // Configure store with root reducer
 const store = configureStore({ reducer })

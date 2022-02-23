@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 
 import log from '../../../../utils/logger'
 
-import { toggleListFilter } from '../../../../state/slices/FilterSlice'
+import { toggleListFilter } from '../../../../state/slices/filters.slice'
 
 import {
   Typography,
@@ -12,7 +12,6 @@ import {
   ListItem,
   ListItemButton,
   ListItemIcon,
-  ListItemText,
   Checkbox,
   Box
 } from '@mui/material'
@@ -62,11 +61,12 @@ const FilterList = React.memo(function FilterList({ name, displayName, items }: 
                     disableRipple
                   />
                 </ListItemIcon>
-                <Typography color={checked ? 'white' : 'text.secondary'}>
-                  <ListItemText
-                    sx={{ textTransform: 'capitalize' }}
-                    primary={filter === 'dlc' ? 'DLC' : filter}
-                  />
+                <Typography
+                  textTransform='capitalize'
+                  color={checked ? 'white' : 'text.secondary'}
+                  fontSize='0.8em'
+                >
+                  {filter === 'dlc' ? 'DLC' : filter}
                 </Typography>
               </ListItemButton>
             </ListItem>

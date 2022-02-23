@@ -4,10 +4,11 @@ import log from '../../../utils/logger'
 import {
   AppBar,
   Box,
-  Toolbar,
-  Typography
+  Toolbar
 } from '@mui/material'
+
 import Search from './Search'
+import Logo from '../Logo'
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
@@ -22,17 +23,17 @@ export default function Header() {
 
   return (
     <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-      <Toolbar sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Typography variant="h6" noWrap component="div" sx={{
-          display: 'flex',
-          alignItems: 'center',
+      <Toolbar sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      }}>
+        <Logo sx={{
           flexDirection: 'row',
           width: { xs: 'auto', ...drawerWidth },
           pr: 4
-        }}>
-          <Box mr={1}>Umbra</Box>
-          <Typography fontSize='0.6em' color='primary'>ALPHA</Typography>
-        </Typography>
+        }} />
         <Box display='flex' justifyContent='center' flex='0.75 0 auto'>
           <Search />
         </Box>

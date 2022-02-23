@@ -5,8 +5,8 @@ import { shallowEqual } from "react-redux"
 
 import log from "../../../../utils/logger"
 
-import { setFilterPage, setSortBy, toggleSortType } from "../../../../state/slices/FilterSlice"
-import { searchProducts, setStatus } from "../../../../state/slices/ProductSlice"
+import { setFilterPage, setSortBy, toggleSortType } from "../../../../state/slices/filters.slice"
+import { searchProducts, setStatus } from "../../../../state/slices/products.slice"
 import Product from "../../../common/Product/Product"
 
 import {
@@ -71,11 +71,10 @@ export default function SearchList() {
 
   let ListContent: JSX.Element
   if (status === 'error') ListContent = (
-    <Box width='100%' height='300px' justifyContent='center' alignItems='center' display='flex'>
+    <Box width='100%' height='300px' justifyContent='center' alignItems='center' display='flex' flexDirection='column'>
       <ErrorOutline fontSize='large' />
-      <Typography>
-        Oops! Something went wrong...
-      </Typography>
+      <Typography mt={2}>Oops! Something went wrong...</Typography>
+      <Typography mt={1}>Try refreshing the page.</Typography>
     </Box>
   )
   else if (status === 'loading') ListContent = (

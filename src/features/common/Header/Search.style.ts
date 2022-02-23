@@ -18,7 +18,7 @@ export const SearchBase = styled('div')(({ theme }) => ({
 
 export const SearchInput = styled(InputBase)(({ theme }) => ({
   flex: '1 0 auto',
-  'padding-left': 16
+  paddingLeft: 16
 }))
 
 export const SearchSubmit = styled(ButtonBase)(() => ({

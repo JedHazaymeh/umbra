@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../../../../state/hooks'
-import { useLocation } from 'react-router-dom'
 
 import log from '../../../../utils/logger'
 
@@ -23,9 +22,7 @@ type Props = {
 }
 
 const FilterList = React.memo(function FilterList({ name, displayName, items }: Props) {
-  const subject = useLocation().pathname.substring(1)
-
-  const list = useAppSelector((state) => state.features.filters[subject][name])
+  const list = useAppSelector((state) => state.features.filters.products[name])
   const dispatch = useAppDispatch()
   
   // log mounts

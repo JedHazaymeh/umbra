@@ -8,7 +8,7 @@ import { createTheme, CssBaseline } from '@mui/material'
 import getThemeOptions from './theme/build'
 
 // Import pages
-import HomePage from './features/pages/Home/HomePage'
+// import HomePage from './features/pages/Home/HomePage'
 import SearchPage from './features/pages/Search/SearchPage'
 import AuthBasePage from './features/pages/Auth/AuthBasePage'
 import RegisterPage from './features/pages/Auth/Register/RegisterPage'
@@ -27,9 +27,8 @@ export default function App() {
     <ThemeProvider theme={theme} >
       <CssBaseline />
       <Routes>
-        <Route path=''         element={ <HomePage />     } />
+        <Route path=''         element={ <SearchPage />   } />
         <Route path='products' element={ <SearchPage />   } />
-        <Route path='games'    element={ <SearchPage />   } />
         <Route path='auth'     element={ <AuthBasePage /> }>
           <Route path='' element={
             loggedIn

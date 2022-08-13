@@ -46,7 +46,9 @@ const Product = React.memo(function Product({ id }: Props) {
   const cover = data.images.cover
 
   return (
-    <CardActionArea>
+    <CardActionArea
+      href={`https://kinguin.net/category/${data.kinguinId}`}
+    >
       <Card sx={{
         display: 'flex',
         height: ['120px', '140px', '160px']
@@ -101,11 +103,11 @@ const Product = React.memo(function Product({ id }: Props) {
           </Box>
           {/* footer box */}
           <Box display='flex' flexDirection='row'>
-            {/* footer left: product genres */}
+            {/* footer left: product price */}
             <Typography variant='h6' component='div' flex='1 0 auto'>
               €{data.price.toFixed(2)}
             </Typography>
-            {/* footer right: product price */}
+            {/* footer right: product region */}
             <Typography textTransform='uppercase' display='flex' alignItems='center' fontSize={['1em', '1.05em', '1em', '1.05em']} variant='subtitle2' color='text.secondary' component='div'>
               {data.regionalLimitations === 'Region Free' ? 'Global' : data.regionalLimitations}
             </Typography>

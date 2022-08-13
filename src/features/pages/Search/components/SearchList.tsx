@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../../../state/hooks"
 import { useEffect, useMemo } from "react"
-import { useLocation } from "react-router-dom"
 import { shallowEqual } from "react-redux"
 
 import log from "../../../../utils/logger"
@@ -30,9 +29,7 @@ import {
 } from '@mui/icons-material'
 
 export default function SearchList() {
-  const subject = useLocation().pathname.substring(1)
-  
-  const filters = useAppSelector((state) => state.features.filters[subject])
+  const filters = useAppSelector((state) => state.features.filters.products)
   const results = useAppSelector((state) => state.features.products.count)
   const pages = useMemo(() => Math.floor(results / filters.limit), [results, filters.limit])
 
@@ -61,12 +58,7 @@ export default function SearchList() {
   })
 
   function GridItem({ id }: { id: number }) {
-    switch (subject) {
-      case 'products':
-        return <Product id={id} />
-      default:
-        return <p>Invalid grid item</p>
-    }
+    return <Product id={id} />
   }
 
   let ListContent: JSX.Element
